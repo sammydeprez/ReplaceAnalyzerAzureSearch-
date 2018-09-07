@@ -12,9 +12,9 @@ namespace ReplaceAnalyzer
     class Program
     {
         // Configurable names
-        private const string AzureSearchName = "qnamakermulti-asp4eu44uas446y";
-        private const string AzureSearchApiKey = "01387A9217A46BFDD4C6D831EE2B0C4B";
-        private const string IndexName = "af15a1b1-b2f4-426f-9352-e04d0fa83982";
+        private const string AzureSearchName = "<<AzureSearchName>>";
+        private const string AzureSearchApiKey = "<<AzureSearchApiKey>>";
+        private const string IndexName = "<<AzureSearchIndex>>";
         private const string NewAnalyzer = "nl.microsoft";
 
 
