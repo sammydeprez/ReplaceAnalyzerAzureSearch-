@@ -15,7 +15,7 @@ namespace ReplaceAnalyzer
         private const string AzureSearchName = "<<AzureSearchName>>";
         private const string AzureSearchApiKey = "<<AzureSearchApiKey>>";
         private const string IndexName = "<<AzureSearchIndex>>";
-        private const string NewAnalyzer = "nl.microsoft";
+        private const string NewAnalyzer = "<<Analyzer>>"; //Ex. nl.microsoft
 
 
         // Clients
