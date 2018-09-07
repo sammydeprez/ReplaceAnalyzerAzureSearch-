@@ -83,21 +83,19 @@ namespace ReplaceAnalyzer
             Console.WriteLine("Creating Index...");
             try
             {
-                using (StreamReader r = new StreamReader("index.json"))
+                string json = JsonConvert.SerializeObject(NewIndex);
+                string uri = String.Format("{0}/indexes/{1}?api-version=2017-11-11-Preview", _searchServiceEndpoint, IndexName);
+                HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = await _httpClient.PutAsync(uri, content);
+
+                string responseText = await response.Content.ReadAsStringAsync();
+                Console.WriteLine("Create Index response: \n{0}", responseText);
+
+                if (!response.IsSuccessStatusCode)
                 {
-                    string json = JsonConvert.SerializeObject(NewIndex);
-                    string uri = String.Format("{0}/indexes/{1}?api-version=2017-11-11-Preview", _searchServiceEndpoint, IndexName);
-                    HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
-                    HttpResponseMessage response = await _httpClient.PutAsync(uri, content);
-
-                    string responseText = await response.Content.ReadAsStringAsync();
-                    Console.WriteLine("Create Index response: \n{0}", responseText);
-
-                    if (!response.IsSuccessStatusCode)
-                    {
-                        return false;
-                    }
+                    return false;
                 }
+
             }
             catch (Exception ex)
             {
